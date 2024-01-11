@@ -1,0 +1,22 @@
+command /hello [<text>]:
+	trigger:
+		send "Hello World!" to player
+
+command /oumu [<text>]:
+	trigger:
+		if arg-1 is not set:
+			send "&c値がありません!" #to playerは省略可能
+			stop #処理の中止
+		send "あなたは&a%arg-1%&rと言いました"
+
+
+
+command /check [<player>]:
+	permission: op
+	trigger:
+		set {_p} to player parsed as offlineplayer
+		if {ip.%{_p}%} is set:
+			send "%{_p}%のIP: %{ip.%{_p}%}%"
+			stop
+		else:
+			send "見つかりませんでした!"
